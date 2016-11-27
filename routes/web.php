@@ -12,6 +12,11 @@
 */
 
 Route::get('/', function () {
+    if (\Illuminate\Support\Facades\Gate::allows('access-admin')) {
+        return 'Usuário com permissão de admin';
+    } else {
+        return 'Usuário sem permissão de admin';
+    }
     return view('welcome');
 });
 
